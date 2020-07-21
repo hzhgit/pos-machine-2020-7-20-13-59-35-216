@@ -23,7 +23,7 @@ function printReceipt(barcodes) {
     // **********************`)
 
     if (isValid(barcodes)) {
-        let goods = getGoods(barcodes)
+        let goods = classifyGoods(barcodes)
         return getPrintReceiptStr(goods);
     }
     return null;
@@ -36,7 +36,7 @@ function isValid(barcodes) {
     return false;
 }
 
-function getGoods(barcodes) {
+function classifyGoods(barcodes) {
     var goods = {};
     var data = loadAllItem().data;
 
