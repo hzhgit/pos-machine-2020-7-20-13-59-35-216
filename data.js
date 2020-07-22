@@ -1,4 +1,4 @@
-var data = [
+var goodItems = [
     {
        barcode: 'ITEM000000',
        name: 'Coca-Cola',

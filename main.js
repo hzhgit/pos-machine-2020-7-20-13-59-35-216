@@ -1,27 +1,4 @@
-const barcodes = [
-    'ITEM000000',
-    'ITEM000000',
-    'ITEM000000',
-    'ITEM000000',
-    'ITEM000000',
-    'ITEM000001',
-    'ITEM000001',
-    'ITEM000004'
-];
-
-
-let result = printReceipt(barcodes);
-
 function printReceipt(barcodes) {
-    //     console.log(`
-    // ***<store earning no money>Receipt ***
-    // Name: Coca-Cola, Quantity: 5, Unit price: 3 (yuan), Subtotal: 15 (yuan)
-    // Name: Sprite, Quantity: 2, Unit price: 3 (yuan), Subtotal: 6 (yuan)
-    // Name: Battery, Quantity: 1, Unit price: 2 (yuan), Subtotal: 2 (yuan)
-    // ----------------------
-    // Total: 23 (yuan)
-    // **********************`)
-
     if (isValid(barcodes)) {
         let goods = classifyGoods(barcodes)
         return getPrintReceiptStr(goods);
@@ -38,11 +15,11 @@ function isValid(barcodes) {
 
 function classifyGoods(barcodes) {
     var goods = {};
-    var data = loadAllItem().data;
+    var goodItems = loadAllItem().data;
 
     for (let i in barcodes) {
         if (!goods.hasOwnProperty(barcodes[i])) {
-            let res = data.filter((item) => {
+            let res = goodItems.filter((item) => {
                 return item.barcode == barcodes[i];
             });
             goods[barcodes[i]] = { 'barcode': barcodes[i], 'name': res[0].name, 'price': res[0].price, 'count': 1 };
